@@ -3,4 +3,4 @@ kind: RoarApp
 metadata:
   name: example-roarapp
 spec:
-  replicas: 2
+  replicas: 5

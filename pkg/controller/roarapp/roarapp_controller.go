@@ -195,6 +195,14 @@ func newPodForCR(cr *appv1alpha1.RoarApp) *corev1.Pod {
 					Image:   "localhost:5000/roar-web-image:v1",
 					Command: []string{"catalina.sh", "run"},
 				},
+                                {
+					Name:    "roar-db",
+					Image:   "localhost:5000/roar-db-image:v1",
+					Env:  []corev1.EnvVar{{Name: "MYSQL_USER", Value: "admin"},{Name: "MYSQL_PASSWORD", Value: "admin"},{Name: "MYSQL_ROOT_PASSWORD", Value: "root+1"},{Name: "MYSQL_DATABASE", Value: "registry"}},
+					Command: []string{"/entrypoint.sh"},
+					Args: []string{"mysqld"},					
+				},
+				
 			},
 		},
 	}
